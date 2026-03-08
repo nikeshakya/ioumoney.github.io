@@ -1,0 +1,4146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IOU Money — App Wireframes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --navy3: #141024;
+        --navy2: #1e1a30;
+        --navy: #2b2640;
+        --purple: #7b5ea7;
+        --purple-light: #a07fd4;
+        --green: #4caf82;
+        --red: #e05c6a;
+        --gold: #f5a623;
+        --bg: #f4f3f8;
+        --card: #fff;
+        --ink: #1e1a30;
+        --muted: #7a748f;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background: #0f0c1a;
+        color: #fff;
+        min-height: 100vh;
+      }
+
+      /* ── HEADER ── */
+      .page-header {
+        padding: 40px 48px 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .page-header h1 {
+        font-weight: 900;
+        font-size: 1.6rem;
+        color: #fff;
+        letter-spacing: -0.02em;
+      }
+      .page-header h1 span {
+        color: var(--purple-light);
+      }
+      .page-header p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 500;
+        margin-top: 4px;
+      }
+
+      /* ── SCREEN NAV ── */
+      .screen-nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        padding: 24px 48px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .screen-btn {
+        padding: 7px 16px;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        cursor: pointer;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        background: transparent;
+        color: rgba(255, 255, 255, 0.5);
+        transition: all 0.2s;
+      }
+      .screen-btn:hover {
+        border-color: var(--purple-light);
+        color: var(--purple-light);
+      }
+      .screen-btn.active {
+        background: var(--purple);
+        border-color: var(--purple);
+        color: #fff;
+      }
+
+      /* ── LAYOUT ── */
+      .workspace {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 0;
+        min-height: calc(100vh - 160px);
+      }
+
+      /* ── ANNOTATIONS PANEL ── */
+      .annotations {
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 36px 32px;
+        overflow-y: auto;
+      }
+      .ann-title {
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--purple-light);
+        margin-bottom: 20px;
+      }
+      .ann-item {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .ann-item:last-child {
+        border-bottom: none;
+      }
+      .ann-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--purple);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 900;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+      .ann-item h4 {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+      .ann-item p {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+        font-weight: 500;
+      }
+      .ann-tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 100px;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .tag-new {
+        background: rgba(76, 175, 130, 0.2);
+        color: var(--green);
+      }
+      .tag-changed {
+        background: rgba(123, 94, 167, 0.2);
+        color: var(--purple-light);
+      }
+      .tag-removed {
+        background: rgba(224, 92, 106, 0.2);
+        color: var(--red);
+      }
+
+      /* ── PHONE FRAME ── */
+      .phone-area {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 40px 48px;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .phone-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .phone-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.35);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .phone {
+        width: 280px;
+        background: #1a1a2e;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow:
+          0 32px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.08);
+        position: relative;
+      }
+      .phone-notch {
+        height: 28px;
+        background: #0f0c1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .notch-pill {
+        width: 80px;
+        height: 20px;
+        background: #0a0815;
+        border-radius: 0 0 14px 14px;
+      }
+
+      .status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 20px 8px;
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ── SCREEN CONTENT ── */
+      .screen {
+        display: none;
+      }
+      .screen.active {
+        display: block;
+      }
+
+      /* colors */
+      .c-green {
+        color: var(--green);
+      }
+      .c-red {
+        color: var(--red);
+      }
+      .c-purple {
+        color: var(--purple-light);
+      }
+      .c-muted {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .c-gold {
+        color: var(--gold);
+      }
+
+      /* ── SHARED COMPONENTS ── */
+      .app-header {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .app-header .title {
+        font-size: 1rem;
+        font-weight: 900;
+      }
+      .icon-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      /* bottom nav */
+      .bottom-nav {
+        display: flex;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 10px 0 16px;
+      }
+      .nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.55rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+      }
+      .nav-item.active {
+        color: var(--purple-light);
+      }
+      .nav-item .nav-icon {
+        font-size: 1rem;
+      }
+      .nav-fab {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin-top: -18px;
+        box-shadow: 0 4px 16px rgba(123, 94, 167, 0.5);
+      }
+
+      /* cards */
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 14px 16px;
+        margin: 0 16px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .card-white {
+        background: #fff;
+        border-radius: 16px;
+        padding: 14px 16px;
+        margin: 0 16px 10px;
+        color: var(--ink);
+      }
+
+      /* summary bar */
+      .summary-bar {
+        margin: 0 16px 14px;
+        background: linear-gradient(135deg, var(--purple) 0%, #5b21b6 100%);
+        border-radius: 18px;
+        padding: 16px 18px;
+        box-shadow: 0 8px 24px rgba(123, 94, 167, 0.4);
+      }
+      .summary-bar .label {
+        font-size: 0.6rem;
+        font-weight: 800;
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .summary-bar .amount {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .summary-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .summary-pill {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+      .summary-pill .s-label {
+        font-size: 0.55rem;
+        font-weight: 700;
+        opacity: 0.7;
+        text-transform: uppercase;
+      }
+      .summary-pill .s-amount {
+        font-size: 0.85rem;
+        font-weight: 900;
+        margin-top: 2px;
+      }
+
+      /* section header */
+      .section-hdr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px 8px;
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .section-hdr a {
+        color: var(--purple-light);
+        cursor: pointer;
+      }
+
+      /* people row */
+      .people-scroll {
+        display: flex;
+        gap: 10px;
+        padding: 0 16px 14px;
+        overflow-x: auto;
+      }
+      .person-chip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .person-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 900;
+        position: relative;
+      }
+      .person-avatar .badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        font-size: 0.45rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #1a1a2e;
+      }
+      .person-chip .p-name {
+        font-size: 0.55rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .person-chip .p-amount {
+        font-size: 0.6rem;
+        font-weight: 900;
+      }
+
+      /* transaction row */
+      .trn-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+      }
+      .trn-row:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .trn-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+      .trn-info {
+        flex: 1;
+      }
+      .trn-name {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .trn-note {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 500;
+        margin-top: 1px;
+      }
+      .trn-right {
+        text-align: right;
+      }
+      .trn-amount {
+        font-size: 0.85rem;
+        font-weight: 900;
+      }
+      .trn-date {
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 1px;
+      }
+      .trn-unverified {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+
+      /* filter pills */
+      .filter-row {
+        display: flex;
+        gap: 8px;
+        padding: 0 16px 12px;
+      }
+      .filter-pill {
+        padding: 5px 12px;
+        border-radius: 100px;
+        font-size: 0.65rem;
+        font-weight: 800;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+      .filter-pill.active {
+        background: var(--purple);
+        border-color: var(--purple);
+        color: #fff;
+      }
+
+      /* detail screen */
+      .detail-hero {
+        padding: 16px 20px 20px;
+        background: linear-gradient(160deg, var(--navy2) 0%, #2d2148 100%);
+      }
+      .detail-people {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 14px;
+      }
+      .detail-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 900;
+        border: 2px solid #1a1a2e;
+      }
+      .detail-vs {
+        font-size: 0.55rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.4);
+        margin: 0 6px;
+      }
+      .detail-amount {
+        font-size: 1.8rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .detail-sub {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.45);
+        font-weight: 500;
+      }
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 0.75rem;
+      }
+      .detail-row .dr-label {
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+      }
+      .detail-row .dr-val {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      /* progress bar */
+      .progress-wrap {
+        padding: 14px 20px;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.65rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .progress-label .pl-paid {
+        color: var(--green);
+      }
+      .progress-label .pl-rem {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .progress-bar {
+        height: 6px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 100px;
+        background: var(--green);
+      }
+
+      /* verify banner — new calm style */
+      .verify-banner {
+        margin: 10px 16px;
+        background: rgba(245, 166, 35, 0.12);
+        border: 1px solid rgba(245, 166, 35, 0.3);
+        border-radius: 12px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .verify-banner p {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+      .verify-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .btn-verify {
+        background: var(--green);
+        color: #fff;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 0.65rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .btn-reject {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.65rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      /* settle modal */
+      .modal-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: flex-end;
+        border-radius: 40px;
+        overflow: hidden;
+      }
+      .modal-sheet {
+        width: 100%;
+        background: #1e1a30;
+        border-radius: 20px 20px 0 0;
+        padding: 20px;
+      }
+      .modal-handle {
+        width: 36px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 0 auto 16px;
+      }
+      .modal-title {
+        font-size: 0.9rem;
+        font-weight: 900;
+        margin-bottom: 4px;
+      }
+      .modal-sub {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 500;
+        margin-bottom: 14px;
+      }
+      .amount-input {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1.5px solid var(--purple);
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: #fff;
+        width: 100%;
+        margin-bottom: 10px;
+        font-family: "Nunito", sans-serif;
+      }
+      .quick-amounts {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+      .quick-pill {
+        flex: 1;
+        padding: 6px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.07);
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-align: center;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .btn-full {
+        width: 100%;
+        padding: 13px;
+        background: var(--purple);
+        color: #fff;
+        border-radius: 14px;
+        font-size: 0.85rem;
+        font-weight: 900;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(123, 94, 167, 0.4);
+      }
+
+      /* credit score */
+      .score-hero {
+        margin: 0 16px 12px;
+        background: linear-gradient(135deg, #1e1a30 0%, #2d2148 100%);
+        border-radius: 18px;
+        padding: 18px;
+        border: 1px solid rgba(123, 94, 167, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+      .score-hero::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(123, 94, 167, 0.15);
+      }
+      .score-label {
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .score-number {
+        font-size: 2.8rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .score-max {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: 700;
+      }
+      .score-grade {
+        display: inline-block;
+        padding: 3px 10px;
+        background: rgba(245, 166, 35, 0.2);
+        color: var(--gold);
+        border-radius: 100px;
+        font-size: 0.65rem;
+        font-weight: 900;
+        margin-top: 6px;
+      }
+
+      /* teaser / blur */
+      .score-teaser {
+        margin: 0 16px 12px;
+        background: linear-gradient(135deg, #1e1a30 0%, #2d2148 100%);
+        border-radius: 18px;
+        padding: 18px;
+        border: 1px solid rgba(123, 94, 167, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+      .score-blur {
+        filter: blur(6px);
+        pointer-events: none;
+      }
+      .teaser-lock {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(14, 10, 30, 0.5);
+        border-radius: 18px;
+      }
+      .lock-icon {
+        font-size: 1.4rem;
+        margin-bottom: 6px;
+      }
+      .lock-text {
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        line-height: 1.4;
+      }
+      .lock-btn {
+        margin-top: 8px;
+        padding: 5px 14px;
+        background: var(--purple);
+        color: #fff;
+        border-radius: 100px;
+        font-size: 0.6rem;
+        font-weight: 900;
+      }
+
+      .score-factors {
+        padding: 0 16px;
+      }
+      .factor-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .factor-icon {
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+      }
+      .factor-info {
+        flex: 1;
+      }
+      .factor-name {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .factor-bar {
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        margin-top: 4px;
+        overflow: hidden;
+      }
+      .factor-fill {
+        height: 100%;
+        border-radius: 2px;
+      }
+      .factor-val {
+        font-size: 0.65rem;
+        font-weight: 900;
+      }
+
+      /* stats */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 0 16px 12px;
+      }
+      .stat-card {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .stat-icon {
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+      .stat-val {
+        font-size: 1rem;
+        font-weight: 900;
+      }
+      .stat-lbl {
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+        margin-top: 2px;
+      }
+
+      /* onboarding */
+      .onboard-step {
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .onboard-illo {
+        font-size: 3.5rem;
+        margin-bottom: 16px;
+      }
+      .onboard-title {
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+      .onboard-sub {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .dots {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .dot.active {
+        width: 18px;
+        background: var(--purple-light);
+      }
+      .btn-next {
+        width: 100%;
+        padding: 13px;
+        background: var(--purple);
+        color: #fff;
+        border-radius: 14px;
+        font-size: 0.85rem;
+        font-weight: 900;
+        text-align: center;
+        cursor: pointer;
+      }
+      .btn-skip {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 700;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      .input-field {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        color: #fff;
+        font-family: "Nunito", sans-serif;
+        margin-bottom: 10px;
+      }
+      .input-field::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* add transaction */
+      .add-screen {
+        padding: 0 16px;
+      }
+      .add-type-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .type-btn {
+        flex: 1;
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 900;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .type-btn.they-owe {
+        border-color: var(--green);
+        color: var(--green);
+        background: rgba(76, 175, 130, 0.1);
+      }
+      .type-btn.i-owe {
+        border-color: var(--red);
+        color: var(--red);
+        background: rgba(224, 92, 106, 0.1);
+      }
+
+      .friend-selector {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 10px 14px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .friend-selector span {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+      }
+
+      .amount-big {
+        text-align: center;
+        padding: 16px 0 10px;
+      }
+      .amount-big .currency {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 700;
+      }
+      .amount-big .value {
+        font-size: 2.4rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+      }
+
+      /* screen scroll area */
+      .screen-scroll {
+        overflow-y: auto;
+        max-height: 460px;
+      }
+
+      @media (max-width: 900px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+        .annotations {
+          border-left: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .screen-nav,
+        .page-header {
+          padding: 20px;
+        }
+        .phone-area {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>IOU<span>.</span>Money — App Wireframes</h1>
+      <p>6 screens · Click tabs to navigate · Annotations on the right</p>
+    </div>
+
+    <div class="screen-nav">
+      <button class="screen-btn active" onclick="showScreen('home')">
+        🏠 Home
+      </button>
+      <button class="screen-btn" onclick="showScreen('friends')">
+        👥 Friends
+      </button>
+      <button class="screen-btn" onclick="showScreen('add')">
+        ➕ Add Transaction
+      </button>
+      <button class="screen-btn" onclick="showScreen('detail')">
+        📋 Transaction Detail
+      </button>
+      <button class="screen-btn" onclick="showScreen('verify')">
+        ✅ Verify Flow
+      </button>
+      <button class="screen-btn" onclick="showScreen('settle')">
+        💸 Settle Up
+      </button>
+      <button class="screen-btn" onclick="showScreen('score')">
+        ⭐ Credit Score
+      </button>
+      <button class="screen-btn" onclick="showScreen('onboard')">
+        👋 Onboarding
+      </button>
+    </div>
+
+    <div class="workspace">
+      <div class="phone-area">
+        <!-- ══ HOME ══ -->
+        <div class="screen active" id="screen-home">
+          <div class="phone-wrap">
+            <div class="phone-label">Home Screen</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <!-- Header -->
+                <div class="app-header" style="padding-bottom: 8px">
+                  <div>
+                    <div
+                      style="
+                        font-size: 0.58rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        font-weight: 700;
+                      "
+                    >
+                      Good morning 👋
+                    </div>
+                    <div style="font-size: 0.95rem; font-weight: 900">
+                      Nikesh
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px">
+                    <div class="icon-btn">🔔</div>
+                    <div class="icon-btn">👤</div>
+                  </div>
+                </div>
+
+                <!-- Hero balance card — dark gradient, big number -->
+                <div
+                  style="
+                    margin: 0 14px 12px;
+                    background: linear-gradient(
+                      140deg,
+                      #3b2f6e 0%,
+                      #1e1a30 100%
+                    );
+                    border-radius: 22px;
+                    padding: 18px 20px;
+                    position: relative;
+                    overflow: hidden;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                  "
+                >
+                  <!-- decorative circles -->
+                  <div
+                    style="
+                      position: absolute;
+                      top: -20px;
+                      right: -20px;
+                      width: 90px;
+                      height: 90px;
+                      border-radius: 50%;
+                      background: rgba(123, 94, 167, 0.2);
+                    "
+                  ></div>
+                  <div
+                    style="
+                      position: absolute;
+                      bottom: -30px;
+                      right: 30px;
+                      width: 60px;
+                      height: 60px;
+                      border-radius: 50%;
+                      background: rgba(76, 175, 130, 0.1);
+                    "
+                  ></div>
+
+                  <div
+                    style="
+                      font-size: 0.58rem;
+                      font-weight: 800;
+                      color: rgba(255, 255, 255, 0.45);
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                      margin-bottom: 4px;
+                    "
+                  >
+                    Net Balance
+                  </div>
+                  <div
+                    style="
+                      font-size: 2rem;
+                      font-weight: 900;
+                      letter-spacing: -0.03em;
+                      line-height: 1;
+                    "
+                  >
+                    +$345<span style="font-size: 1rem; opacity: 0.6">.00</span>
+                  </div>
+
+                  <!-- Mini bar chart — 6 months -->
+                  <div
+                    style="
+                      margin: 14px 0 10px;
+                      display: flex;
+                      align-items: flex-end;
+                      gap: 5px;
+                      height: 36px;
+                    "
+                  >
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(76, 175, 130, 0.35);
+                          height: 14px;
+                        "
+                      ></div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(224, 92, 106, 0.35);
+                          height: 20px;
+                        "
+                      ></div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(76, 175, 130, 0.35);
+                          height: 28px;
+                        "
+                      ></div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(76, 175, 130, 0.35);
+                          height: 18px;
+                        "
+                      ></div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(224, 92, 106, 0.35);
+                          height: 10px;
+                        "
+                      ></div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2px;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 100%;
+                          border-radius: 3px 3px 0 0;
+                          background: rgba(76, 175, 130, 0.9);
+                          height: 36px;
+                          border: 1px solid rgba(76, 175, 130, 0.5);
+                        "
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      font-size: 0.5rem;
+                      color: rgba(255, 255, 255, 0.25);
+                      font-weight: 700;
+                    "
+                  >
+                    <span>Oct</span><span>Nov</span><span>Dec</span
+                    ><span>Jan</span><span>Feb</span><span>Mar</span>
+                  </div>
+
+                  <!-- Owed / Owe pills -->
+                  <div style="display: flex; gap: 8px; margin-top: 12px">
+                    <div
+                      style="
+                        flex: 1;
+                        background: rgba(76, 175, 130, 0.15);
+                        border: 1px solid rgba(76, 175, 130, 0.3);
+                        border-radius: 12px;
+                        padding: 8px 10px;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 0.52rem;
+                          font-weight: 800;
+                          color: rgba(255, 255, 255, 0.45);
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                        "
+                      >
+                        Owed to you
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.9rem;
+                          font-weight: 900;
+                          color: #4caf82;
+                          margin-top: 2px;
+                        "
+                      >
+                        $580.00
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        background: rgba(224, 92, 106, 0.12);
+                        border: 1px solid rgba(224, 92, 106, 0.25);
+                        border-radius: 12px;
+                        padding: 8px 10px;
+                      "
+                    >
+                      <div
+                        style="
+                          font-size: 0.52rem;
+                          font-weight: 800;
+                          color: rgba(255, 255, 255, 0.45);
+                          text-transform: uppercase;
+                          letter-spacing: 0.06em;
+                        "
+                      >
+                        You owe
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.9rem;
+                          font-weight: 900;
+                          color: #e05c6a;
+                          margin-top: 2px;
+                        "
+                      >
+                        $235.00
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Friend cards — horizontal scroll, bigger cards -->
+                <div class="section-hdr">
+                  <span>Friends</span><a>See all</a>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    padding: 0 14px 14px;
+                    overflow-x: auto;
+                  "
+                >
+                  <!-- Friend card: Jake — owes you -->
+                  <div
+                    style="
+                      flex-shrink: 0;
+                      width: 110px;
+                      background: linear-gradient(
+                        145deg,
+                        rgba(76, 175, 130, 0.18),
+                        rgba(76, 175, 130, 0.06)
+                      );
+                      border: 1px solid rgba(76, 175, 130, 0.25);
+                      border-radius: 18px;
+                      padding: 12px 10px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        background: rgba(76, 175, 130, 0.25);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.85rem;
+                        font-weight: 900;
+                        margin-bottom: 8px;
+                      "
+                    >
+                      J
+                    </div>
+                    <div
+                      style="font-size: 0.7rem; font-weight: 800; color: #fff"
+                    >
+                      Jake
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        font-weight: 600;
+                        margin-bottom: 6px;
+                      "
+                    >
+                      owes you
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        color: #4caf82;
+                      "
+                    >
+                      +$120
+                    </div>
+                    <!-- mini sparkline -->
+                    <svg
+                      width="90"
+                      height="20"
+                      style="margin-top: 6px; display: block"
+                    >
+                      <polyline
+                        points="0,16 18,10 36,14 54,6 72,8 90,4"
+                        fill="none"
+                        stroke="rgba(76,175,130,0.6)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <!-- Friend card: Maya — you owe -->
+                  <div
+                    style="
+                      flex-shrink: 0;
+                      width: 110px;
+                      background: linear-gradient(
+                        145deg,
+                        rgba(224, 92, 106, 0.16),
+                        rgba(224, 92, 106, 0.05)
+                      );
+                      border: 1px solid rgba(224, 92, 106, 0.22);
+                      border-radius: 18px;
+                      padding: 12px 10px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        background: rgba(224, 92, 106, 0.25);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.85rem;
+                        font-weight: 900;
+                        margin-bottom: 8px;
+                      "
+                    >
+                      M
+                    </div>
+                    <div
+                      style="font-size: 0.7rem; font-weight: 800; color: #fff"
+                    >
+                      Maya
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        font-weight: 600;
+                        margin-bottom: 6px;
+                      "
+                    >
+                      you owe
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        color: #e05c6a;
+                      "
+                    >
+                      -$35
+                    </div>
+                    <svg
+                      width="90"
+                      height="20"
+                      style="margin-top: 6px; display: block"
+                    >
+                      <polyline
+                        points="0,4 18,10 36,6 54,14 72,12 90,16"
+                        fill="none"
+                        stroke="rgba(224,92,106,0.6)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <!-- Friend card: Sam — owes you -->
+                  <div
+                    style="
+                      flex-shrink: 0;
+                      width: 110px;
+                      background: linear-gradient(
+                        145deg,
+                        rgba(123, 94, 167, 0.18),
+                        rgba(123, 94, 167, 0.06)
+                      );
+                      border: 1px solid rgba(123, 94, 167, 0.25);
+                      border-radius: 18px;
+                      padding: 12px 10px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        background: rgba(123, 94, 167, 0.25);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.85rem;
+                        font-weight: 900;
+                        margin-bottom: 8px;
+                      "
+                    >
+                      S
+                    </div>
+                    <div
+                      style="font-size: 0.7rem; font-weight: 800; color: #fff"
+                    >
+                      Sam
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        font-weight: 600;
+                        margin-bottom: 6px;
+                      "
+                    >
+                      owes you
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        color: #4caf82;
+                      "
+                    >
+                      +$80
+                    </div>
+                    <svg
+                      width="90"
+                      height="20"
+                      style="margin-top: 6px; display: block"
+                    >
+                      <polyline
+                        points="0,14 18,12 36,8 54,10 72,6 90,4"
+                        fill="none"
+                        stroke="rgba(123,94,167,0.7)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <!-- Friend card: Raj — pending -->
+                  <div
+                    style="
+                      flex-shrink: 0;
+                      width: 110px;
+                      background: linear-gradient(
+                        145deg,
+                        rgba(245, 166, 35, 0.14),
+                        rgba(245, 166, 35, 0.04)
+                      );
+                      border: 1px solid rgba(245, 166, 35, 0.22);
+                      border-radius: 18px;
+                      padding: 12px 10px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        background: rgba(245, 166, 35, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.85rem;
+                        font-weight: 900;
+                        margin-bottom: 8px;
+                      "
+                    >
+                      R
+                    </div>
+                    <div
+                      style="font-size: 0.7rem; font-weight: 800; color: #fff"
+                    >
+                      Raj
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.4);
+                        font-weight: 600;
+                        margin-bottom: 6px;
+                      "
+                    >
+                      awaiting confirm
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.68rem;
+                        font-weight: 800;
+                        color: #f5a623;
+                      "
+                    >
+                      ⏳ Pending
+                    </div>
+                    <div
+                      style="
+                        margin-top: 8px;
+                        height: 4px;
+                        border-radius: 2px;
+                        background: rgba(245, 166, 35, 0.15);
+                        overflow: hidden;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 40%;
+                          height: 100%;
+                          background: rgba(245, 166, 35, 0.5);
+                          border-radius: 2px;
+                        "
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recent — just 2 rows, clean -->
+                <div class="section-hdr">
+                  <span>Recent activity</span><a>All</a>
+                </div>
+                <div class="trn-row">
+                  <div
+                    class="trn-avatar"
+                    style="background: rgba(76, 175, 130, 0.2)"
+                  >
+                    J
+                  </div>
+                  <div class="trn-info">
+                    <div class="trn-name">Jake · Lunch at Himalayan</div>
+                    <div class="trn-note">2 days ago</div>
+                  </div>
+                  <div
+                    class="trn-amount c-green"
+                    style="font-size: 0.85rem; font-weight: 900"
+                  >
+                    +$120
+                  </div>
+                </div>
+                <div class="trn-row">
+                  <div
+                    class="trn-avatar"
+                    style="background: rgba(224, 92, 106, 0.2)"
+                  >
+                    M
+                  </div>
+                  <div class="trn-info">
+                    <div class="trn-name">Maya · Taxi to airport</div>
+                    <div class="trn-note" style="color: #f5a623">
+                      ⏳ Unconfirmed · Yesterday
+                    </div>
+                  </div>
+                  <div
+                    class="trn-amount c-red"
+                    style="font-size: 0.85rem; font-weight: 900"
+                  >
+                    -$35
+                  </div>
+                </div>
+              </div>
+
+              <div class="bottom-nav">
+                <div class="nav-item active">
+                  <div class="nav-icon">🏠</div>
+                  <span>Home</span>
+                </div>
+                <div class="nav-item">
+                  <div class="nav-icon">👥</div>
+                  <span>Friends</span>
+                </div>
+                <div class="nav-item"><div class="nav-fab">+</div></div>
+                <div class="nav-item">
+                  <div class="nav-icon">📊</div>
+                  <span>Stats</span>
+                </div>
+                <div class="nav-item">
+                  <div class="nav-icon">⭐</div>
+                  <span>Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ FRIENDS TAB ══ -->
+        <div class="screen" id="screen-friends">
+          <div class="phone-wrap">
+            <div class="phone-label">Friends Tab</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="app-header">
+                  <div class="title">Friends</div>
+                  <div class="icon-btn" style="font-size: 1rem">＋</div>
+                </div>
+
+                <!-- Search -->
+                <div
+                  style="
+                    margin: 0 14px 12px;
+                    background: rgba(255, 255, 255, 0.06);
+                    border-radius: 12px;
+                    padding: 9px 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                  "
+                >
+                  <span style="font-size: 0.8rem; opacity: 0.4">🔍</span>
+                  <span
+                    style="
+                      font-size: 0.72rem;
+                      color: rgba(255, 255, 255, 0.3);
+                      font-weight: 600;
+                    "
+                    >Search friends…</span
+                  >
+                </div>
+
+                <!-- Summary strip -->
+                <div style="display: flex; gap: 8px; padding: 0 14px 14px">
+                  <div
+                    style="
+                      flex: 1;
+                      background: rgba(76, 175, 130, 0.12);
+                      border: 1px solid rgba(76, 175, 130, 0.2);
+                      border-radius: 12px;
+                      padding: 10px 12px;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.52rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.4);
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                      "
+                    >
+                      They owe you
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.95rem;
+                        font-weight: 900;
+                        color: #4caf82;
+                        margin-top: 3px;
+                      "
+                    >
+                      $580
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.58rem;
+                        color: rgba(255, 255, 255, 0.3);
+                        font-weight: 600;
+                        margin-top: 1px;
+                      "
+                    >
+                      3 friends
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      flex: 1;
+                      background: rgba(224, 92, 106, 0.1);
+                      border: 1px solid rgba(224, 92, 106, 0.2);
+                      border-radius: 12px;
+                      padding: 10px 12px;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.52rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.4);
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                      "
+                    >
+                      You owe
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.95rem;
+                        font-weight: 900;
+                        color: #e05c6a;
+                        margin-top: 3px;
+                      "
+                    >
+                      $235
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.58rem;
+                        color: rgba(255, 255, 255, 0.3);
+                        font-weight: 600;
+                        margin-top: 1px;
+                      "
+                    >
+                      1 friend
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Filter tabs -->
+                <div class="filter-row" style="padding: 0 14px 10px">
+                  <div class="filter-pill active">All</div>
+                  <div class="filter-pill">Owe me</div>
+                  <div class="filter-pill">I owe</div>
+                  <div class="filter-pill">Pending</div>
+                </div>
+
+                <div class="section-hdr"><span>4 friends</span></div>
+
+                <!-- Friend row: Jake — owes you, verified -->
+                <div
+                  style="
+                    margin: 0 14px 8px;
+                    background: rgba(255, 255, 255, 0.04);
+                    border: 1px solid rgba(76, 175, 130, 0.15);
+                    border-radius: 16px;
+                    padding: 12px 14px;
+                    cursor: pointer;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: rgba(76, 175, 130, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        flex-shrink: 0;
+                      "
+                    >
+                      J
+                    </div>
+                    <div style="flex: 1">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: baseline;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.82rem;
+                            font-weight: 800;
+                            color: #fff;
+                          "
+                        >
+                          Jake
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.9rem;
+                            font-weight: 900;
+                            color: #4caf82;
+                          "
+                        >
+                          +$120
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          margin-top: 3px;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.6rem;
+                            color: rgba(255, 255, 255, 0.35);
+                            font-weight: 600;
+                          "
+                        >
+                          owes you · 2 transactions
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.55rem;
+                            font-weight: 800;
+                            color: #4caf82;
+                            background: rgba(76, 175, 130, 0.15);
+                            padding: 2px 7px;
+                            border-radius: 100px;
+                          "
+                        >
+                          ✓ verified
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- progress bar: how much of their debt remains -->
+                  <div style="margin-top: 10px">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.3);
+                        font-weight: 600;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      <span>$80 paid back</span><span>$40 remaining</span>
+                    </div>
+                    <div
+                      style="
+                        height: 4px;
+                        border-radius: 2px;
+                        background: rgba(255, 255, 255, 0.08);
+                        overflow: hidden;
+                      "
+                    >
+                      <div
+                        style="
+                          width: 66%;
+                          height: 100%;
+                          background: #4caf82;
+                          border-radius: 2px;
+                        "
+                      ></div>
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px; margin-top: 10px">
+                    <div
+                      style="
+                        flex: 1;
+                        padding: 7px;
+                        background: rgba(76, 175, 130, 0.15);
+                        border-radius: 10px;
+                        font-size: 0.62rem;
+                        font-weight: 800;
+                        color: #4caf82;
+                        text-align: center;
+                        cursor: pointer;
+                      "
+                    >
+                      Settle up
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        padding: 7px;
+                        background: rgba(255, 255, 255, 0.06);
+                        border-radius: 10px;
+                        font-size: 0.62rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.5);
+                        text-align: center;
+                        cursor: pointer;
+                      "
+                    >
+                      View history
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Friend row: Maya — you owe, unverified -->
+                <div
+                  style="
+                    margin: 0 14px 8px;
+                    background: rgba(255, 255, 255, 0.04);
+                    border: 1px solid rgba(224, 92, 106, 0.15);
+                    border-radius: 16px;
+                    padding: 12px 14px;
+                    cursor: pointer;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: rgba(224, 92, 106, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        flex-shrink: 0;
+                      "
+                    >
+                      M
+                    </div>
+                    <div style="flex: 1">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: baseline;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.82rem;
+                            font-weight: 800;
+                            color: #fff;
+                          "
+                        >
+                          Maya
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.9rem;
+                            font-weight: 900;
+                            color: #e05c6a;
+                          "
+                        >
+                          -$35
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          margin-top: 3px;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.6rem;
+                            color: rgba(255, 255, 255, 0.35);
+                            font-weight: 600;
+                          "
+                        >
+                          you owe · 1 transaction
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.55rem;
+                            font-weight: 800;
+                            color: #f5a623;
+                            background: rgba(245, 166, 35, 0.12);
+                            padding: 2px 7px;
+                            border-radius: 100px;
+                          "
+                        >
+                          ⏳ unconfirmed
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px; margin-top: 10px">
+                    <div
+                      style="
+                        flex: 1;
+                        padding: 7px;
+                        background: rgba(224, 92, 106, 0.15);
+                        border-radius: 10px;
+                        font-size: 0.62rem;
+                        font-weight: 800;
+                        color: #e05c6a;
+                        text-align: center;
+                        cursor: pointer;
+                      "
+                    >
+                      Pay back
+                    </div>
+                    <div
+                      style="
+                        flex: 1;
+                        padding: 7px;
+                        background: rgba(255, 255, 255, 0.06);
+                        border-radius: 10px;
+                        font-size: 0.62rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.5);
+                        text-align: center;
+                        cursor: pointer;
+                      "
+                    >
+                      View history
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Friend row: Raj — invited, not on app -->
+                <div
+                  style="
+                    margin: 0 14px 8px;
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px dashed rgba(255, 255, 255, 0.12);
+                    border-radius: 16px;
+                    padding: 12px 14px;
+                    cursor: pointer;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.06);
+                        border: 1.5px dashed rgba(255, 255, 255, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.9rem;
+                        font-weight: 900;
+                        flex-shrink: 0;
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                    >
+                      R
+                    </div>
+                    <div style="flex: 1">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: baseline;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.82rem;
+                            font-weight: 800;
+                            color: rgba(255, 255, 255, 0.5);
+                          "
+                        >
+                          Raj
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.9rem;
+                            font-weight: 900;
+                            color: #f5a623;
+                          "
+                        >
+                          $200
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          margin-top: 3px;
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 0.6rem;
+                            color: rgba(255, 255, 255, 0.28);
+                            font-weight: 600;
+                          "
+                        >
+                          raj@email.com · not on app yet
+                        </div>
+                        <div
+                          style="
+                            font-size: 0.55rem;
+                            font-weight: 800;
+                            color: #f5a623;
+                            background: rgba(245, 166, 35, 0.1);
+                            padding: 2px 7px;
+                            border-radius: 100px;
+                          "
+                        >
+                          📩 invited
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      margin-top: 10px;
+                      padding: 7px 10px;
+                      background: rgba(245, 166, 35, 0.08);
+                      border-radius: 10px;
+                      font-size: 0.6rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      font-weight: 600;
+                      line-height: 1.5;
+                    "
+                  >
+                    Transaction will link automatically when Raj joins with this
+                    email.
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item">
+                  <div class="nav-icon">🏠</div>
+                  <span>Home</span>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">👥</div>
+                  <span>Friends</span>
+                </div>
+                <div class="nav-item"><div class="nav-fab">+</div></div>
+                <div class="nav-item">
+                  <div class="nav-icon">📊</div>
+                  <span>Stats</span>
+                </div>
+                <div class="nav-item">
+                  <div class="nav-icon">⭐</div>
+                  <span>Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ ADD TRANSACTION ══ -->
+        <div class="screen" id="screen-add">
+          <div class="phone-wrap">
+            <div class="phone-label">Add — Existing Friend</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="app-header">
+                  <div
+                    style="
+                      font-size: 0.75rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      cursor: pointer;
+                    "
+                  >
+                    ← Cancel
+                  </div>
+                  <div class="title">New IOU</div>
+                  <div style="width: 40px"></div>
+                </div>
+
+                <div class="add-screen">
+                  <!-- Direction -->
+                  <div
+                    style="
+                      font-size: 0.6rem;
+                      font-weight: 800;
+                      color: rgba(255, 255, 255, 0.4);
+                      text-transform: uppercase;
+                      letter-spacing: 0.08em;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Direction
+                  </div>
+                  <div class="add-type-row">
+                    <div class="type-btn they-owe">They owe me</div>
+                    <div
+                      class="type-btn"
+                      style="
+                        border-color: rgba(255, 255, 255, 0.1);
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                    >
+                      I owe them
+                    </div>
+                  </div>
+
+                  <!-- Friend picker — with search -->
+                  <div
+                    style="
+                      font-size: 0.6rem;
+                      font-weight: 800;
+                      color: rgba(255, 255, 255, 0.4);
+                      text-transform: uppercase;
+                      letter-spacing: 0.08em;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Who?
+                  </div>
+                  <div class="friend-selector" style="margin-bottom: 6px">
+                    <div
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        background: rgba(76, 175, 130, 0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.8rem;
+                        font-weight: 900;
+                      "
+                    >
+                      J
+                    </div>
+                    <span style="color: #fff; font-weight: 700; flex: 1"
+                      >Jake</span
+                    >
+                    <span
+                      style="font-size: 0.6rem; color: rgba(255, 255, 255, 0.3)"
+                      >▼ change</span
+                    >
+                  </div>
+
+                  <!-- Amount -->
+                  <div class="amount-big" style="padding: 12px 0 8px">
+                    <div class="currency">USD $</div>
+                    <div class="value">120.00</div>
+                  </div>
+
+                  <!-- Note + dates -->
+                  <input
+                    class="input-field"
+                    placeholder="What's it for? e.g. Lunch, Rent…"
+                    value="Lunch at Himalayan"
+                  />
+                  <div style="display: flex; gap: 8px">
+                    <input
+                      class="input-field"
+                      placeholder="📅 Date"
+                      value="Today"
+                      style="flex: 1"
+                    />
+                    <input
+                      class="input-field"
+                      placeholder="↩ Due date"
+                      style="flex: 1"
+                    />
+                  </div>
+
+                  <!-- Currency -->
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      padding: 6px 0 10px;
+                      font-size: 0.7rem;
+                      font-weight: 700;
+                      color: rgba(255, 255, 255, 0.4);
+                    "
+                  >
+                    <span>Currency</span>
+                    <span style="color: var(--purple-light)"
+                      >USD — US Dollar ▼</span
+                    >
+                  </div>
+
+                  <div class="btn-next">Log IOU →</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADD via email (outside app) -->
+          <div class="phone-wrap">
+            <div class="phone-label">Add — Invite by Email</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="app-header">
+                  <div
+                    style="
+                      font-size: 0.75rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      cursor: pointer;
+                    "
+                  >
+                    ← Cancel
+                  </div>
+                  <div class="title">New IOU</div>
+                  <div style="width: 40px"></div>
+                </div>
+
+                <div class="add-screen">
+                  <!-- Direction -->
+                  <div
+                    style="
+                      font-size: 0.6rem;
+                      font-weight: 800;
+                      color: rgba(255, 255, 255, 0.4);
+                      text-transform: uppercase;
+                      letter-spacing: 0.08em;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Direction
+                  </div>
+                  <div class="add-type-row">
+                    <div class="type-btn they-owe">They owe me</div>
+                    <div
+                      class="type-btn"
+                      style="
+                        border-color: rgba(255, 255, 255, 0.1);
+                        color: rgba(255, 255, 255, 0.3);
+                      "
+                    >
+                      I owe them
+                    </div>
+                  </div>
+
+                  <!-- Friend picker showing email search state -->
+                  <div
+                    style="
+                      font-size: 0.6rem;
+                      font-weight: 800;
+                      color: rgba(255, 255, 255, 0.4);
+                      text-transform: uppercase;
+                      letter-spacing: 0.08em;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Who?
+                  </div>
+
+                  <!-- Search field — user typed an email -->
+                  <div
+                    style="
+                      background: rgba(255, 255, 255, 0.07);
+                      border: 1.5px solid var(--purple);
+                      border-radius: 12px;
+                      padding: 9px 14px;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <span style="font-size: 0.8rem; opacity: 0.5">🔍</span>
+                    <span
+                      style="
+                        font-size: 0.78rem;
+                        font-weight: 700;
+                        color: #fff;
+                        flex: 1;
+                      "
+                      >raj@email.com</span
+                    >
+                    <span
+                      style="font-size: 0.6rem; color: rgba(255, 255, 255, 0.3)"
+                      >✕</span
+                    >
+                  </div>
+
+                  <!-- No match found — invite option -->
+                  <div
+                    style="
+                      background: rgba(245, 166, 35, 0.1);
+                      border: 1px solid rgba(245, 166, 35, 0.25);
+                      border-radius: 14px;
+                      padding: 12px 14px;
+                      margin-bottom: 12px;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        color: #f5a623;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      📩 Not on IOU Money yet
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.62rem;
+                        color: rgba(255, 255, 255, 0.45);
+                        font-weight: 500;
+                        line-height: 1.6;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      Log the IOU now using their email. When Raj signs up with
+                      <strong style="color: rgba(255, 255, 255, 0.7)"
+                        >raj@email.com</strong
+                      >, this transaction will link to their account
+                      automatically.
+                    </div>
+                    <div
+                      style="
+                        padding: 7px 0;
+                        background: rgba(245, 166, 35, 0.2);
+                        border-radius: 10px;
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        color: #f5a623;
+                        text-align: center;
+                        cursor: pointer;
+                      "
+                    >
+                      Use this email → Raj
+                    </div>
+                  </div>
+
+                  <!-- Name field appears for uninvited -->
+                  <input
+                    class="input-field"
+                    placeholder="Their name (so you recognise them)"
+                    value="Raj"
+                  />
+
+                  <!-- Amount -->
+                  <div class="amount-big" style="padding: 10px 0 6px">
+                    <div class="currency">USD $</div>
+                    <div class="value">200.00</div>
+                  </div>
+
+                  <input
+                    class="input-field"
+                    placeholder="What's it for? e.g. Concert tickets…"
+                  />
+                  <div style="display: flex; gap: 8px">
+                    <input
+                      class="input-field"
+                      placeholder="📅 Date"
+                      value="Today"
+                      style="flex: 1"
+                    />
+                    <input
+                      class="input-field"
+                      placeholder="↩ Due"
+                      style="flex: 1"
+                    />
+                  </div>
+
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      padding: 6px 0 10px;
+                      font-size: 0.7rem;
+                      font-weight: 700;
+                      color: rgba(255, 255, 255, 0.4);
+                    "
+                  >
+                    <span>Currency</span>
+                    <span style="color: var(--purple-light)"
+                      >USD — US Dollar ▼</span
+                    >
+                  </div>
+
+                  <div class="btn-next">Log IOU + Send Invite →</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ TRANSACTION DETAIL ══ -->
+        <div class="screen" id="screen-detail">
+          <div class="phone-wrap">
+            <div class="phone-label">Transaction Detail</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="detail-hero">
+                  <div
+                    style="
+                      font-size: 0.65rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      margin-bottom: 10px;
+                    "
+                  >
+                    ← Jake · Lunch at Himalayan
+                  </div>
+                  <div class="detail-people">
+                    <div
+                      class="detail-avatar"
+                      style="background: rgba(76, 175, 130, 0.25)"
+                    >
+                      J
+                    </div>
+                    <div class="detail-vs">owes</div>
+                    <div
+                      class="detail-avatar"
+                      style="background: rgba(123, 94, 167, 0.25)"
+                    >
+                      N
+                    </div>
+                  </div>
+                  <div class="detail-amount c-green">$120.00</div>
+                  <div class="detail-sub">
+                    Jake owes you · Lunch at Himalayan
+                  </div>
+                </div>
+
+                <!-- progress -->
+                <div class="progress-wrap">
+                  <div class="progress-label">
+                    <span class="pl-paid">Paid $80</span>
+                    <span class="pl-rem">Remaining $40</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 66%"></div>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <span class="dr-label">Date</span>
+                  <span class="dr-val">Dec 16, 2022</span>
+                </div>
+                <div class="detail-row">
+                  <span class="dr-label">Due date</span>
+                  <span class="dr-val">Dec 19, 2022</span>
+                </div>
+                <div class="detail-row">
+                  <span class="dr-label">Status</span>
+                  <span class="dr-val" style="color: var(--green)"
+                    >✓ Verified</span
+                  >
+                </div>
+                <div class="detail-row">
+                  <span class="dr-label">Currency</span>
+                  <span class="dr-val">USD · [NPR 16,200]</span>
+                </div>
+
+                <div
+                  style="
+                    padding: 14px 20px 6px;
+                    font-size: 0.65rem;
+                    font-weight: 800;
+                    color: rgba(255, 255, 255, 0.4);
+                    text-transform: uppercase;
+                    letter-spacing: 0.08em;
+                  "
+                >
+                  Activity
+                </div>
+                <div class="trn-row">
+                  <div
+                    style="
+                      width: 8px;
+                      height: 8px;
+                      border-radius: 50%;
+                      background: var(--green);
+                      flex-shrink: 0;
+                    "
+                  ></div>
+                  <div class="trn-info">
+                    <div class="trn-name" style="font-size: 0.72rem">
+                      Partial payment received
+                    </div>
+                    <div class="trn-note">$80 · Dec 18, 2022</div>
+                  </div>
+                </div>
+                <div class="trn-row">
+                  <div
+                    style="
+                      width: 8px;
+                      height: 8px;
+                      border-radius: 50%;
+                      background: var(--purple-light);
+                      flex-shrink: 0;
+                    "
+                  ></div>
+                  <div class="trn-info">
+                    <div class="trn-name" style="font-size: 0.72rem">
+                      Transaction verified
+                    </div>
+                    <div class="trn-note">Both sides confirmed · Dec 17</div>
+                  </div>
+                </div>
+
+                <div style="padding: 14px 16px">
+                  <div
+                    class="btn-next"
+                    style="
+                      background: var(--green);
+                      box-shadow: 0 4px 16px rgba(76, 175, 130, 0.35);
+                    "
+                  >
+                    Settle Up →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ VERIFY FLOW ══ -->
+        <div class="screen" id="screen-verify">
+          <div class="phone-wrap">
+            <div class="phone-label">Verify Flow — Before</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="detail-hero">
+                  <div
+                    style="
+                      font-size: 0.65rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      margin-bottom: 10px;
+                    "
+                  >
+                    ← Sam · World tour fund
+                  </div>
+                  <div class="detail-people">
+                    <div
+                      class="detail-avatar"
+                      style="background: rgba(123, 94, 167, 0.25)"
+                    >
+                      S
+                    </div>
+                    <div class="detail-vs">owes</div>
+                    <div
+                      class="detail-avatar"
+                      style="background: rgba(76, 175, 130, 0.25)"
+                    >
+                      N
+                    </div>
+                  </div>
+                  <div class="detail-amount c-green">$500.00</div>
+                  <div class="detail-sub">Sam owes you · World tour fund</div>
+                </div>
+
+                <!-- calm verify banner -->
+                <div class="verify-banner">
+                  <div>
+                    <div
+                      style="
+                        font-size: 0.6rem;
+                        font-weight: 800;
+                        color: var(--gold);
+                        margin-bottom: 2px;
+                      "
+                    >
+                      ⏳ Awaiting your confirmation
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.65rem;
+                        color: rgba(255, 255, 255, 0.5);
+                        font-weight: 500;
+                      "
+                    >
+                      Sam added this. Does it look right?
+                    </div>
+                  </div>
+                  <div class="verify-actions">
+                    <div class="btn-verify">Confirm</div>
+                    <div class="btn-reject">Dispute</div>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <span class="dr-label">Date</span
+                  ><span class="dr-val">Dec 16, 2022</span>
+                </div>
+                <div class="detail-row">
+                  <span class="dr-label">Due</span
+                  ><span class="dr-val">Dec 19, 2022</span>
+                </div>
+                <div class="detail-row">
+                  <span class="dr-label">Status</span>
+                  <span class="dr-val" style="color: var(--gold)"
+                    >⏳ Unconfirmed</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ SETTLE UP ══ -->
+        <div class="screen" id="screen-settle">
+          <div class="phone-wrap">
+            <div class="phone-label">Settle Up</div>
+            <div class="phone" style="position: relative">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="detail-hero">
+                  <div
+                    style="
+                      font-size: 0.65rem;
+                      color: rgba(255, 255, 255, 0.4);
+                      margin-bottom: 10px;
+                    "
+                  >
+                    ← Jake · Lunch at Himalayan
+                  </div>
+                  <div class="detail-amount c-green">$120.00</div>
+                  <div class="detail-sub">Jake owes you</div>
+                </div>
+                <div class="progress-wrap">
+                  <div class="progress-label">
+                    <span class="pl-paid">Paid $0</span>
+                    <span class="pl-rem">Remaining $120</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom sheet modal -->
+              <div class="modal-overlay">
+                <div class="modal-sheet">
+                  <div class="modal-handle"></div>
+                  <div class="modal-title">Record a payment</div>
+                  <div class="modal-sub">$120.00 remaining · Jake → You</div>
+
+                  <div class="progress-wrap" style="padding: 0 0 12px">
+                    <div class="progress-label">
+                      <span class="pl-paid">Paid $0</span>
+                      <span class="pl-rem">of $120.00</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <input class="amount-input" value="$ 60.00" />
+                  <div class="quick-amounts">
+                    <div class="quick-pill">$30</div>
+                    <div
+                      class="quick-pill"
+                      style="
+                        background: rgba(123, 94, 167, 0.2);
+                        color: var(--purple-light);
+                        border: 1px solid rgba(123, 94, 167, 0.3);
+                      "
+                    >
+                      $60
+                    </div>
+                    <div class="quick-pill">Full $120</div>
+                  </div>
+                  <div class="btn-full">Confirm Payment</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ CREDIT SCORE ══ -->
+        <div class="screen" id="screen-score">
+          <!-- PREMIUM version -->
+          <div class="phone-wrap">
+            <div class="phone-label">Credit Score — Premium</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="app-header">
+                  <div class="title">IOU Score</div>
+                  <div
+                    style="
+                      font-size: 0.6rem;
+                      color: rgba(255, 255, 255, 0.35);
+                      font-weight: 600;
+                    "
+                  >
+                    Mar 2025 – Mar 2026
+                  </div>
+                </div>
+
+                <!-- Gauge arc -->
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 8px 0 4px;
+                  "
+                >
+                  <svg width="180" height="100" viewBox="0 0 180 100">
+                    <!-- track -->
+                    <path
+                      d="M 20 90 A 70 70 0 0 1 160 90"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.1)"
+                      stroke-width="12"
+                      stroke-linecap="round"
+                    />
+                    <!-- fill: 614/850 ≈ 72% of 180deg arc -->
+                    <path
+                      d="M 20 90 A 70 70 0 0 1 160 90"
+                      fill="none"
+                      stroke="url(#scoreGrad)"
+                      stroke-width="12"
+                      stroke-linecap="round"
+                      stroke-dasharray="220"
+                      stroke-dashoffset="61"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="scoreGrad"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stop-color="#e05c6a" />
+                        <stop offset="50%" stop-color="#f5a623" />
+                        <stop offset="100%" stop-color="#4caf82" />
+                      </linearGradient>
+                    </defs>
+                    <text
+                      x="90"
+                      y="82"
+                      text-anchor="middle"
+                      font-size="26"
+                      font-weight="900"
+                      fill="#fff"
+                      font-family="Nunito"
+                    >
+                      614
+                    </text>
+                  </svg>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      width: 160px;
+                      font-size: 0.55rem;
+                      color: rgba(255, 255, 255, 0.3);
+                      font-weight: 700;
+                      margin-top: -6px;
+                    "
+                  >
+                    <span>0</span><span>850</span>
+                  </div>
+                  <!-- Band label -->
+                  <div
+                    style="
+                      margin-top: 8px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <div
+                      style="
+                        padding: 3px 12px;
+                        background: rgba(76, 175, 130, 0.2);
+                        border: 1px solid rgba(76, 175, 130, 0.4);
+                        border-radius: 100px;
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        color: #4caf82;
+                      "
+                    >
+                      Great
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.6rem;
+                        color: rgba(255, 255, 255, 0.35);
+                        font-weight: 600;
+                      "
+                    >
+                      651–750 range
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Score bands legend -->
+                <div
+                  style="
+                    margin: 8px 16px 12px;
+                    background: rgba(255, 255, 255, 0.04);
+                    border-radius: 12px;
+                    padding: 10px 12px;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 4px;
+                    "
+                  >
+                    <span
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 700;
+                        color: var(--red);
+                      "
+                      >Building</span
+                    >
+                    <span
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 700;
+                        color: var(--gold);
+                      "
+                      >Fair</span
+                    >
+                    <span
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 700;
+                        color: #a0c878;
+                      "
+                      >Good</span
+                    >
+                    <span
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 700;
+                        color: var(--green);
+                      "
+                      >Great</span
+                    >
+                    <span
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 700;
+                        color: #7eefc7;
+                      "
+                      >Trusted</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      height: 5px;
+                      border-radius: 3px;
+                      background: linear-gradient(
+                        90deg,
+                        #e05c6a,
+                        #f5a623,
+                        #a0c878,
+                        #4caf82,
+                        #7eefc7
+                      );
+                      position: relative;
+                    "
+                  >
+                    <!-- needle -->
+                    <div
+                      style="
+                        position: absolute;
+                        left: 72%;
+                        top: -3px;
+                        width: 2px;
+                        height: 11px;
+                        background: #fff;
+                        border-radius: 1px;
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 3px;
+                    "
+                  >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >0</span
+                    >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >300</span
+                    >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >500</span
+                    >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >650</span
+                    >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >750</span
+                    >
+                    <span
+                      style="font-size: 0.5rem; color: rgba(255, 255, 255, 0.3)"
+                      >850</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Badge — prominent -->
+                <div
+                  style="
+                    margin: 0 16px 12px;
+                    background: linear-gradient(135deg, #2d2148, #1e1a30);
+                    border: 1px solid rgba(245, 166, 35, 0.3);
+                    border-radius: 16px;
+                    padding: 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 52px;
+                      height: 52px;
+                      border-radius: 14px;
+                      background: rgba(245, 166, 35, 0.15);
+                      border: 2px solid rgba(245, 166, 35, 0.3);
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-size: 1.6rem;
+                      flex-shrink: 0;
+                    "
+                  >
+                    🏅
+                  </div>
+                  <div style="flex: 1">
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.4);
+                        text-transform: uppercase;
+                        letter-spacing: 0.08em;
+                      "
+                    >
+                      Current Badge
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.95rem;
+                        font-weight: 900;
+                        color: var(--gold);
+                        line-height: 1.1;
+                      "
+                    >
+                      Reliable Payer
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.6rem;
+                        color: rgba(255, 255, 255, 0.45);
+                        font-weight: 500;
+                        margin-top: 2px;
+                      "
+                    >
+                      You consistently pay on time
+                    </div>
+                  </div>
+                  <div style="text-align: right">
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.35);
+                        font-weight: 600;
+                      "
+                    >
+                      Next badge
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.65rem;
+                        font-weight: 800;
+                        color: var(--purple-light);
+                      "
+                    >
+                      🏆 Trusted
+                    </div>
+                    <div
+                      style="
+                        font-size: 0.55rem;
+                        color: rgba(255, 255, 255, 0.3);
+                        font-weight: 500;
+                      "
+                    >
+                      +136 pts
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Factor breakdown -->
+                <div class="section-hdr"><span>Score Factors</span></div>
+                <div class="score-factors">
+                  <div class="factor-row">
+                    <div class="factor-icon">⏱️</div>
+                    <div class="factor-info">
+                      <div class="factor-name">On-time repayment</div>
+                      <div class="factor-bar">
+                        <div
+                          class="factor-fill"
+                          style="width: 85%; background: var(--green)"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="factor-val c-green">85%</div>
+                  </div>
+                  <div class="factor-row">
+                    <div class="factor-icon">✅</div>
+                    <div class="factor-info">
+                      <div class="factor-name">Verified transactions</div>
+                      <div class="factor-bar">
+                        <div
+                          class="factor-fill"
+                          style="width: 92%; background: var(--purple-light)"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="factor-val c-purple">92%</div>
+                  </div>
+                  <div class="factor-row">
+                    <div class="factor-icon">⚡</div>
+                    <div class="factor-info">
+                      <div class="factor-name">Avg repayment speed</div>
+                      <div class="factor-bar">
+                        <div
+                          class="factor-fill"
+                          style="width: 70%; background: var(--gold)"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="factor-val c-gold">3.2d avg</div>
+                  </div>
+                  <div class="factor-row">
+                    <div class="factor-icon">💰</div>
+                    <div class="factor-info">
+                      <div class="factor-name">Total amount cleared</div>
+                      <div class="factor-bar">
+                        <div
+                          class="factor-fill"
+                          style="width: 60%; background: var(--green)"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="factor-val c-green">NPR 4.2k</div>
+                  </div>
+                </div>
+
+                <!-- Note -->
+                <div
+                  style="
+                    margin: 10px 16px 16px;
+                    background: rgba(255, 255, 255, 0.04);
+                    border-radius: 10px;
+                    padding: 10px 12px;
+                  "
+                >
+                  <div
+                    style="
+                      font-size: 0.62rem;
+                      color: rgba(255, 255, 255, 0.35);
+                      font-weight: 500;
+                      line-height: 1.6;
+                    "
+                  >
+                    ℹ️ Only transactions confirmed by both sides count toward
+                    your score.
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item">
+                  <div class="nav-icon">🏠</div>
+                  <span>Home</span>
+                </div>
+                <div class="nav-item">
+                  <div class="nav-icon">👥</div>
+                  <span>Friends</span>
+                </div>
+                <div class="nav-item"><div class="nav-fab">+</div></div>
+                <div class="nav-item">
+                  <div class="nav-icon">📊</div>
+                  <span>Stats</span>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">⭐</div>
+                  <span>Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FREE / Teaser version -->
+          <div class="phone-wrap">
+            <div class="phone-label">Credit Score — Free (Teaser)</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="screen-scroll">
+                <div class="app-header">
+                  <div class="title">IOU Score</div>
+                </div>
+
+                <!-- Blurred gauge -->
+                <div style="position: relative; margin: 0 16px 12px">
+                  <div
+                    style="
+                      filter: blur(5px);
+                      pointer-events: none;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      padding: 8px 0 4px;
+                      background: rgba(255, 255, 255, 0.03);
+                      border-radius: 16px;
+                    "
+                  >
+                    <svg width="180" height="100" viewBox="0 0 180 100">
+                      <path
+                        d="M 20 90 A 70 70 0 0 1 160 90"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.1)"
+                        stroke-width="12"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M 20 90 A 70 70 0 0 1 160 90"
+                        fill="none"
+                        stroke="url(#scoreGrad2)"
+                        stroke-width="12"
+                        stroke-linecap="round"
+                        stroke-dasharray="220"
+                        stroke-dashoffset="61"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="scoreGrad2"
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="0%"
+                        >
+                          <stop offset="0%" stop-color="#e05c6a" />
+                          <stop offset="100%" stop-color="#4caf82" />
+                        </linearGradient>
+                      </defs>
+                      <text
+                        x="90"
+                        y="82"
+                        text-anchor="middle"
+                        font-size="26"
+                        font-weight="900"
+                        fill="#fff"
+                        font-family="Nunito"
+                      >
+                        614
+                      </text>
+                    </svg>
+                    <div
+                      style="
+                        padding: 3px 12px;
+                        background: rgba(76, 175, 130, 0.2);
+                        border-radius: 100px;
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        color: #4caf82;
+                        margin-top: 4px;
+                      "
+                    >
+                      Great
+                    </div>
+                  </div>
+                  <!-- Lock overlay -->
+                  <div
+                    style="
+                      position: absolute;
+                      inset: 0;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      background: rgba(14, 10, 30, 0.55);
+                      border-radius: 16px;
+                      backdrop-filter: blur(2px);
+                    "
+                  >
+                    <div style="font-size: 1.6rem; margin-bottom: 6px">🔒</div>
+                    <div
+                      style="
+                        font-size: 0.72rem;
+                        font-weight: 900;
+                        color: #fff;
+                        text-align: center;
+                        line-height: 1.4;
+                      "
+                    >
+                      Your score is ready.<br />Upgrade to see it.
+                    </div>
+                    <div
+                      style="
+                        margin-top: 10px;
+                        padding: 6px 18px;
+                        background: var(--purple);
+                        color: #fff;
+                        border-radius: 100px;
+                        font-size: 0.65rem;
+                        font-weight: 900;
+                        box-shadow: 0 4px 12px rgba(123, 94, 167, 0.5);
+                      "
+                    >
+                      Go Premium
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Blurred badge -->
+                <div style="position: relative; margin: 0 16px 12px">
+                  <div
+                    style="
+                      filter: blur(4px);
+                      pointer-events: none;
+                      background: linear-gradient(135deg, #2d2148, #1e1a30);
+                      border: 1px solid rgba(245, 166, 35, 0.2);
+                      border-radius: 16px;
+                      padding: 14px;
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 12px;
+                        background: rgba(245, 166, 35, 0.15);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.4rem;
+                      "
+                    >
+                      🏅
+                    </div>
+                    <div>
+                      <div
+                        style="
+                          font-size: 0.55rem;
+                          color: rgba(255, 255, 255, 0.4);
+                        "
+                      >
+                        Current Badge
+                      </div>
+                      <div
+                        style="
+                          font-size: 0.9rem;
+                          font-weight: 900;
+                          color: var(--gold);
+                        "
+                      >
+                        Reliable Payer
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      inset: 0;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      background: rgba(14, 10, 30, 0.4);
+                      border-radius: 16px;
+                    "
+                  >
+                    <div
+                      style="
+                        font-size: 0.65rem;
+                        font-weight: 800;
+                        color: rgba(255, 255, 255, 0.6);
+                      "
+                    >
+                      🔒 Badge locked
+                    </div>
+                  </div>
+                </div>
+
+                <!-- What you get -->
+                <div
+                  style="
+                    margin: 0 16px 12px;
+                    background: rgba(245, 166, 35, 0.07);
+                    border: 1px solid rgba(245, 166, 35, 0.2);
+                    border-radius: 14px;
+                    padding: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      font-size: 0.72rem;
+                      font-weight: 900;
+                      color: var(--gold);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    ✨ Unlock with Premium
+                  </div>
+                  <div
+                    style="
+                      font-size: 0.68rem;
+                      color: rgba(255, 255, 255, 0.55);
+                      font-weight: 500;
+                      line-height: 1.8;
+                    "
+                  >
+                    🏆 Full score + badge breakdown<br />
+                    📊 Repayment trend over time<br />
+                    ⚡ See which factor to improve<br />
+                    🔗 Share your score with friends
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item">
+                  <div class="nav-icon">🏠</div>
+                  <span>Home</span>
+                </div>
+                <div class="nav-item">
+                  <div class="nav-icon">👥</div>
+                  <span>Friends</span>
+                </div>
+                <div class="nav-item"><div class="nav-fab">+</div></div>
+                <div class="nav-item">
+                  <div class="nav-icon">📊</div>
+                  <span>Stats</span>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">⭐</div>
+                  <span>Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ ONBOARDING ══ -->
+        <div class="screen" id="screen-onboard">
+          <!-- Step 1: Welcome + Sign In (iOS) -->
+          <div class="phone-wrap">
+            <div class="phone-label">Step 1 — iOS Sign In</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="onboard-step" style="padding-top: 28px">
+                <div
+                  style="
+                    font-size: 2.2rem;
+                    font-weight: 900;
+                    letter-spacing: -0.04em;
+                    margin-bottom: 6px;
+                  "
+                >
+                  IOU<span style="color: var(--purple-light)">.</span>Money
+                </div>
+                <div class="onboard-title" style="font-size: 1rem">
+                  Track money between friends
+                </div>
+                <div class="onboard-sub" style="margin-bottom: 28px">
+                  No more awkward "hey, remember that money?" conversations. Log
+                  it once. Both sides confirm it.
+                </div>
+
+                <!-- Apple Sign In button -->
+                <div
+                  style="
+                    width: 100%;
+                    padding: 13px 16px;
+                    background: #fff;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#000">
+                    <path
+                      d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.27.06 2.15.74 2.9.8.88-.17 1.72-.87 2.67-.95 1.18-.1 2.31.4 3.04 1.4a5.48 5.48 0 00-2.55 4.87c.06 3.43 2.96 4.57 2.94 4.74zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                    />
+                  </svg>
+                  <span
+                    style="font-size: 0.85rem; font-weight: 900; color: #000"
+                    >Sign in with Apple</span
+                  >
+                </div>
+
+                <div
+                  style="
+                    font-size: 0.62rem;
+                    color: rgba(255, 255, 255, 0.25);
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 1.6;
+                  "
+                >
+                  By signing in you agree to our<br /><span
+                    style="color: var(--purple-light)"
+                    >Terms</span
+                  >
+                  and
+                  <span style="color: var(--purple-light)">Privacy Policy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 1 Android variant -->
+          <div class="phone-wrap">
+            <div class="phone-label">Step 1 — Android Sign In</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div class="onboard-step" style="padding-top: 28px">
+                <div
+                  style="
+                    font-size: 2.2rem;
+                    font-weight: 900;
+                    letter-spacing: -0.04em;
+                    margin-bottom: 6px;
+                  "
+                >
+                  IOU<span style="color: var(--purple-light)">.</span>Money
+                </div>
+                <div class="onboard-title" style="font-size: 1rem">
+                  Track money between friends
+                </div>
+                <div class="onboard-sub" style="margin-bottom: 28px">
+                  No more awkward "hey, remember that money?" conversations. Log
+                  it once. Both sides confirm it.
+                </div>
+
+                <!-- Google Sign In button -->
+                <div
+                  style="
+                    width: 100%;
+                    padding: 13px 16px;
+                    background: #fff;
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path
+                      fill="#4285F4"
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    />
+                  </svg>
+                  <span
+                    style="font-size: 0.85rem; font-weight: 900; color: #000"
+                    >Sign in with Google</span
+                  >
+                </div>
+
+                <div
+                  style="
+                    font-size: 0.62rem;
+                    color: rgba(255, 255, 255, 0.25);
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 1.6;
+                  "
+                >
+                  By signing in you agree to our<br /><span
+                    style="color: var(--purple-light)"
+                    >Terms</span
+                  >
+                  and
+                  <span style="color: var(--purple-light)">Privacy Policy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Name only -->
+          <div class="phone-wrap">
+            <div class="phone-label">Step 2 — Your Name</div>
+            <div class="phone">
+              <div class="phone-notch"><div class="notch-pill"></div></div>
+              <div class="status-bar"><span>9:41</span><span>● ▲ 🔋</span></div>
+              <div
+                class="onboard-step"
+                style="
+                  padding-top: 36px;
+                  align-items: flex-start;
+                  text-align: left;
+                "
+              >
+                <div
+                  style="
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                    margin-bottom: 6px;
+                    align-self: flex-start;
+                  "
+                >
+                  What should we<br />call you? 👋
+                </div>
+                <div
+                  style="
+                    font-size: 0.72rem;
+                    color: rgba(255, 255, 255, 0.4);
+                    font-weight: 500;
+                    margin-bottom: 24px;
+                    line-height: 1.6;
+                  "
+                >
+                  This is how your friends will recognise you when you tag them
+                  in a transaction.
+                </div>
+
+                <input
+                  class="input-field"
+                  placeholder="Your name"
+                  value="Nikesh"
+                  style="
+                    font-size: 1.1rem;
+                    font-weight: 800;
+                    padding: 14px 16px;
+                  "
+                />
+
+                <div style="width: 100%; margin-top: 8px">
+                  <div class="btn-next">That's me →</div>
+                </div>
+                <div
+                  style="
+                    font-size: 0.62rem;
+                    color: rgba(255, 255, 255, 0.25);
+                    font-weight: 600;
+                    margin-top: 12px;
+                    text-align: center;
+                    width: 100%;
+                  "
+                >
+                  Only your name is stored. Nothing else.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /phone-area -->
+
+      <!-- ANNOTATIONS -->
+      <div class="annotations" id="annotations-panel"></div>
+    </div>
+
+    <script>
+      const annotations = {
+        home: [
+          {
+            num: 1,
+            title: "Hero balance card with bar chart",
+            desc: "Big number + 6-month bar chart built right into the card. At a glance you see your net position AND how it's trending. Feels alive, not static.",
+            tag: "new",
+          },
+          {
+            num: 2,
+            title: "Friend cards — not chips",
+            desc: "Each friend gets a full card with avatar, relationship, balance, and a sparkline trend. Coloured by direction: green = they owe you, red = you owe them, amber = pending.",
+            tag: "changed",
+          },
+          {
+            num: 3,
+            title: "Sparklines per friend",
+            desc: "Each friend card has a tiny line chart showing balance movement over time. Instantly shows if a debt is growing or shrinking.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Pending state visualised",
+            desc: "Raj's card shows a progress bar and '⏳ Pending' — visual status without any text clutter.",
+            tag: "new",
+          },
+          {
+            num: 5,
+            title: "Recent activity trimmed to 2 rows",
+            desc: "Home shows only 2 recent items — enough for context, not a full list. 'All' link takes you to the complete feed.",
+            tag: "changed",
+          },
+          {
+            num: 6,
+            title: "Unconfirmed shown inline",
+            desc: "Maya's row shows '⏳ Unconfirmed · Yesterday' in amber text — no separate dot or banner needed.",
+            tag: "changed",
+          },
+        ],
+        friends: [
+          {
+            num: 1,
+            title: "Summary strip at top",
+            desc: "Two pills — 'They owe you $580 · 3 friends' and 'You owe $235 · 1 friend'. Total picture at a glance before scrolling.",
+            tag: "new",
+          },
+          {
+            num: 2,
+            title: "Filter tabs",
+            desc: "All / Owe me / I owe / Pending — quick way to focus on what matters right now.",
+            tag: "new",
+          },
+          {
+            num: 3,
+            title: "Per-friend progress bar",
+            desc: "Each card shows how much of a debt has been paid back vs remaining. Motivates both sides to settle.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Inline action buttons per friend",
+            desc: "'Settle up' and 'View history' right on the card — no need to tap in and navigate to act.",
+            tag: "new",
+          },
+          {
+            num: 5,
+            title: "Invited / not on app state",
+            desc: "Raj's card uses a dashed border, faded avatar, and 'raj@email.com · not on app yet' label. Clearly distinct from active friends.",
+            tag: "new",
+          },
+          {
+            num: 6,
+            title: "Auto-link explainer on invited card",
+            desc: "'Transaction will link automatically when Raj joins' — removes any doubt about what happens next.",
+            tag: "new",
+          },
+        ],
+        add: [
+          {
+            num: 1,
+            title: "Two screens side by side",
+            desc: "Left: adding an existing friend. Right: the email invite flow. Same form, different 'Who?' state.",
+            tag: "new",
+          },
+          {
+            num: 2,
+            title: "Friend picker doubles as search",
+            desc: "Typing in the friend field searches both existing friends AND falls back to email if no match found.",
+            tag: "changed",
+          },
+          {
+            num: 3,
+            title: "Email not found — amber card",
+            desc: "When the email isn't in the system, an amber card appears explaining what happens. Not an error — a feature.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Name field for uninvited users",
+            desc: "After selecting an email invite, a name field appears so you can label them something readable.",
+            tag: "new",
+          },
+          {
+            num: 5,
+            title: "CTA changes to 'Log IOU + Send Invite'",
+            desc: "Button label tells the user exactly what two things will happen: the IOU is logged AND an invite is sent.",
+            tag: "new",
+          },
+          {
+            num: 6,
+            title: "Auto-link on join",
+            desc: "When the invited person signs up with the same email via Google/Apple, the transaction links to their account silently — no action needed.",
+            tag: "new",
+          },
+        ],
+        detail: [
+          {
+            num: 1,
+            title: "Name + note as title",
+            desc: "'Jake · Lunch at Himalayan' replaces 'TRN #3159'. Meaningful context at a glance.",
+            tag: "changed",
+          },
+          {
+            num: 2,
+            title: "Direction shown clearly",
+            desc: "'Jake owes you' in plain text under the amount — no decoding Debtor/Creditor.",
+            tag: "changed",
+          },
+          {
+            num: 3,
+            title: "Repayment progress bar",
+            desc: "Visual bar shows paid vs remaining. Immediate understanding of where things stand.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Activity log",
+            desc: "Chronological list of payments and verifications — full audit trail without clutter.",
+            tag: "new",
+          },
+          {
+            num: 5,
+            title: "'Settle Up' CTA",
+            desc: "Single action button surfaced on the detail screen. No navigation required.",
+            tag: "new",
+          },
+          {
+            num: 6,
+            title: "Emails removed from view",
+            desc: "Contact details not shown on the transaction detail — cleaner and more private.",
+            tag: "removed",
+          },
+        ],
+        verify: [
+          {
+            num: 1,
+            title: "Calm amber banner",
+            desc: "Replaces the alarming cyan/blue 'You have not verified this transaction.' banner. Amber = needs attention, not error.",
+            tag: "changed",
+          },
+          {
+            num: 2,
+            title: "Human language",
+            desc: "'Sam added this. Does it look right?' instead of 'You have not verified this transaction.'",
+            tag: "changed",
+          },
+          {
+            num: 3,
+            title: "'Confirm' not 'Verify'",
+            desc: "Verify is technical jargon. Confirm is what you actually do.",
+            tag: "changed",
+          },
+          {
+            num: 4,
+            title: "'Dispute' not 'Reject'",
+            desc: "Reject is harsh and final-sounding. Dispute is accurate and opens a conversation.",
+            tag: "changed",
+          },
+          {
+            num: 5,
+            title: "Reject demoted to text link",
+            desc: "Reject/Dispute is now a subtle underlined link, not a full red button. Reduces accidental taps.",
+            tag: "changed",
+          },
+        ],
+        settle: [
+          {
+            num: 1,
+            title: "Bottom sheet pattern",
+            desc: "Settlement uses a slide-up sheet over the transaction — keeps context visible behind it.",
+            tag: "new",
+          },
+          {
+            num: 2,
+            title: "Progress bar in modal",
+            desc: "Shows paid vs remaining inside the settlement sheet so user knows exactly what they're entering.",
+            tag: "new",
+          },
+          {
+            num: 3,
+            title: "Quick amount shortcuts",
+            desc: "$30 / $60 / Full $120 shortcuts — one tap for common scenarios. Reduces typing.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Friendly language",
+            desc: "'Record a payment' instead of 'SUBMIT YOUR AMOUNT IN USD'. No all-caps.",
+            tag: "changed",
+          },
+          {
+            num: 5,
+            title: "'Confirm Payment' CTA",
+            desc: "Clear action label. User knows exactly what pressing the button does.",
+            tag: "changed",
+          },
+        ],
+        score: [
+          {
+            num: 1,
+            title: "Arc gauge + score number",
+            desc: "Keeps your existing arc gauge concept — cleaned up, colour-coded red→amber→green. Score prominent at centre.",
+            tag: "changed",
+          },
+          {
+            num: 2,
+            title: "0–850 scale with 5 bands",
+            desc: "Building (0–300) · Fair (301–500) · Good (501–650) · Great (651–750) · Trusted (751–850). Wide enough that small improvements feel meaningful.",
+            tag: "changed",
+          },
+          {
+            num: 3,
+            title: "Score Badge — prominent card",
+            desc: "Badge gets its own full card with icon, name, description, and 'next badge + points needed'. Motivates improvement.",
+            tag: "changed",
+          },
+          {
+            num: 4,
+            title: "Badge progression visible",
+            desc: "'Next badge: Trusted — +136 pts' tells users exactly what to work toward. Replaces vague 'Observer' label.",
+            tag: "new",
+          },
+          {
+            num: 5,
+            title: "Factor bars with context",
+            desc: "Each of the 4 factors has a bar + value. User can see at a glance which factor to focus on.",
+            tag: "changed",
+          },
+          {
+            num: 6,
+            title: "Free teaser: gauge + badge both blurred",
+            desc: "Both the score arc AND the badge card are blurred for free users — doubling the upgrade incentive.",
+            tag: "new",
+          },
+          {
+            num: 7,
+            title: "Note moved inline",
+            desc: "'Only confirmed transactions count' note moved to a small footer — no longer buried in a blocky grey card.",
+            tag: "changed",
+          },
+        ],
+        onboard: [
+          {
+            num: 1,
+            title: "2 steps only",
+            desc: "Sign in → Name. That's it. No email, no password, no confirmation screen, no multi-step form.",
+            tag: "changed",
+          },
+          {
+            num: 2,
+            title: "Platform-native auth",
+            desc: "iOS shows Sign in with Apple only. Android shows Sign in with Google only. No cross-platform confusion.",
+            tag: "new",
+          },
+          {
+            num: 3,
+            title: "Value proposition on sign-in screen",
+            desc: "The headline and subtext are on the same screen as the sign-in button — user reads the pitch and acts immediately.",
+            tag: "new",
+          },
+          {
+            num: 4,
+            title: "Name only — no other fields",
+            desc: "One large input. 'What should we call you?' — conversational, not form-like. No email, phone, or username.",
+            tag: "changed",
+          },
+          {
+            num: 5,
+            title: "Trust line under name field",
+            desc: "'Only your name is stored. Nothing else.' — removes any hesitation about data collection upfront.",
+            tag: "new",
+          },
+          {
+            num: 6,
+            title: "No 'already have an account' needed",
+            desc: "Sign in with Apple/Google handles returning users automatically. No separate login flow required.",
+            tag: "removed",
+          },
+        ],
+      };
+
+      function showScreen(name) {
+        document
+          .querySelectorAll(".screen")
+          .forEach((s) => s.classList.remove("active"));
+        document
+          .querySelectorAll(".screen-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById("screen-" + name).classList.add("active");
+        event.target.classList.add("active");
+
+        const panel = document.getElementById("annotations-panel");
+        const items = annotations[name] || [];
+        panel.innerHTML =
+          `<div class="ann-title">Design Notes — ${name.charAt(0).toUpperCase() + name.slice(1)}</div>` +
+          items
+            .map(
+              (a) => `
+      <div class="ann-item">
+        <div class="ann-num">${a.num}</div>
+        <h4>${a.title}</h4>
+        <p>${a.desc}</p>
+        <span class="ann-tag tag-${a.tag}">${a.tag}</span>
+      </div>
+    `,
+            )
+            .join("");
+      }
+
+      // Init
+      showScreen("home");
+      document.querySelector(".screen-btn").classList.add("active");
+    </script>
+  </body>
+</html>
