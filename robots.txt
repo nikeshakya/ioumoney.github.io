@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /wireframe_v2.html
+Disallow: /api/
+
+Sitemap: https://ioumoney.app/sitemap.xml
