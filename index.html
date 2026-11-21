@@ -3,8 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IOU Money — Track money between friends, stress-free</title>
+    <title>IOU Money: Free IOU Tracker for Money You Lend &amp; Borrow</title>
+    <meta
+      name="description"
+      content="Track money you lend and borrow with friends. Log a loan in seconds, get repaid in parts, in any currency. Free IOU tracker for iPhone and Android."
+    />
+    <link rel="canonical" href="https://ioumoney.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#1e1a30" />
+    <meta name="p:domain_verify" content="87ef94a22097765eff5fac0d06cdc427" />
+    <meta name="apple-itunes-app" content="app-id=1557082693" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IOU Money" />
+    <meta property="og:url" content="https://ioumoney.app/" />
+    <meta property="og:title" content="IOU Money: Free IOU Tracker for Money You Lend &amp; Borrow" />
+    <meta
+      property="og:description"
+      content="Log a loan in seconds, your friend gets notified, and partial repayments are tracked in any currency. Free on iPhone and Android."
+    />
+    <meta property="og:image" content="https://ioumoney.app/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="IOU Money: stop forgetting who owes what" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IOU Money: Free IOU Tracker for Money You Lend &amp; Borrow" />
+    <meta
+      name="twitter:description"
+      content="Log a loan in seconds, your friend gets notified, and partial repayments are tracked in any currency."
+    />
+    <meta name="twitter:image" content="https://ioumoney.app/assets/img/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://ioumoney.app/#org",
+            "name": "IOU Money",
+            "url": "https://ioumoney.app/",
+            "logo": "https://ioumoney.app/assets/img/apple-touch-icon.png",
+            "sameAs": [
+              "https://www.facebook.com/iou.money.npl",
+              "https://www.instagram.com/iou.money/",
+              "https://www.linkedin.com/company/iou-money",
+              "https://apps.apple.com/app/id1557082693",
+              "https://play.google.com/store/apps/details?id=com.ioumoney.app"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ioumoney.app/#website",
+            "url": "https://ioumoney.app/",
+            "name": "IOU Money",
+            "publisher": { "@id": "https://ioumoney.app/#org" }
+          },
+          {
+            "@type": "MobileApplication",
+            "name": "IOU Money",
+            "description": "IOU tracker app to record money you lend and borrow with friends, confirm each loan from both sides, and log partial repayments in any currency.",
+            "url": "https://ioumoney.app/",
+            "image": "https://ioumoney.app/assets/img/og-image.png",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "iOS, Android",
+            "installUrl": [
+              "https://apps.apple.com/app/id1557082693",
+              "https://play.google.com/store/apps/details?id=com.ioumoney.app"
+            ],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://ioumoney.app/#org" }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -14,31 +94,34 @@
   <body>
     <!-- NAV -->
     <nav>
-      <a class="nav-logo" href="#">IOU<span>.</span>Money</a>
+      <a class="nav-logo" href="/">IOU<span>.</span>Money</a>
       <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
       </div>
       <a
         class="nav-cta"
-        href="https://apps.apple.com/np/app/iou-money/id1557082693"
+        href="https://apps.apple.com/app/id1557082693"
         >Get the app →</a
       >
     </nav>
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-badge">🎉 Free on iOS &amp; Android</div>
+      <div class="hero-badge">🎉 Free IOU tracker for iOS &amp; Android</div>
       <h1>Stop forgetting<br />who owes <span class="highlight">what</span></h1>
       <p class="hero-sub">
-        Log a loan in seconds. Your friend gets notified. No awkward money
-        conversations ever again.
+        IOU Money keeps track of money you lend and borrow. Log a loan in
+        seconds, your friend gets notified, and no awkward money conversations
+        ever again.
       </p>
       <div class="store-badges">
         <a
           class="store-badge"
-          href="https://apps.apple.com/np/app/iou-money/id1557082693"
+          href="https://apps.apple.com/app/id1557082693"
           target="_blank"
+          rel="noopener"
         >
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -51,6 +134,7 @@
           class="store-badge"
           href="https://play.google.com/store/apps/details?id=com.ioumoney.app"
           target="_blank"
+          rel="noopener"
         >
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -108,8 +192,8 @@
       <p class="tag reveal">How it works</p>
       <h2 class="section-title reveal">Three taps. Done.</h2>
       <p class="section-sub reveal">
-        No tutorials. No setup. Open the app and start tracking in under a
-        minute.
+        No tutorials. No setup. Open the IOU app and start tracking who owes
+        you in under a minute.
       </p>
       <div class="steps">
         <div class="step reveal">
@@ -147,7 +231,7 @@
           Everything you need.<br />Nothing you don't.
         </h2>
         <p class="section-sub reveal">
-          Five focused features. Each one there for a reason — to make sure you
+          A simple loan and debt tracker with five focused features, so you
           always know exactly where you stand with the people in your life.
         </p>
         <div class="features-grid">
@@ -253,6 +337,99 @@
       </div>
     </div>
 
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <p class="tag reveal">FAQ</p>
+      <h2 class="section-title reveal">Questions about tracking IOUs</h2>
+      <p class="section-sub reveal">
+        Everything you need to know about keeping track of money you lend and
+        borrow with IOU Money.
+      </p>
+      <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>What is IOU Money?</summary>
+            <p>IOU Money is a free IOU tracker app for iPhone and Android. It keeps a record of money you lend to friends and money you borrow, so you always know who owes what.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Is IOU Money free?</summary>
+            <p>Yes. IOU Money is free to download and use on the App Store and Google Play.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does my friend need the app too?</summary>
+            <p>No. You can log a loan with someone who isn&#x27;t on IOU Money yet. When they sign up, your past transactions with them sync to their account so both of you see the same record.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Can I track partial repayments?</summary>
+            <p>Yes. If a friend pays you back a little at a time, log each partial payment and the remaining balance updates automatically.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Does it work with different currencies?</summary>
+            <p>Yes. Every IOU can be recorded in the currency it happened in, which helps when you lend money while travelling or to friends abroad.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>How is IOU Money different from a bill-splitting app?</summary>
+            <p>Bill-splitting apps divide shared group expenses. IOU Money is built for personal loans: money you lend or borrow between two people, confirmed by both sides, with the full repayment history kept.</p>
+          </details>
+      </div>
+    </section>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is IOU Money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IOU Money is a free IOU tracker app for iPhone and Android. It keeps a record of money you lend to friends and money you borrow, so you always know who owes what."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is IOU Money free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. IOU Money is free to download and use on the App Store and Google Play."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my friend need the app too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You can log a loan with someone who isn't on IOU Money yet. When they sign up, your past transactions with them sync to their account so both of you see the same record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track partial repayments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If a friend pays you back a little at a time, log each partial payment and the remaining balance updates automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with different currencies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every IOU can be recorded in the currency it happened in, which helps when you lend money while travelling or to friends abroad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is IOU Money different from a bill-splitting app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bill-splitting apps divide shared group expenses. IOU Money is built for personal loans: money you lend or borrow between two people, confirmed by both sides, with the full repayment history kept."
+      }
+    }
+  ]
+}
+    </script>
+
     <!-- CTA -->
     <section class="cta-section">
       <div class="cta-inner">
@@ -264,8 +441,9 @@
         <div class="store-badges reveal">
           <a
             class="store-badge"
-            href="https://apps.apple.com/np/app/iou-money/id1557082693"
+            href="https://apps.apple.com/app/id1557082693"
             target="_blank"
+            rel="noopener"
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
               <path
@@ -278,6 +456,7 @@
             class="store-badge"
             href="https://play.google.com/store/apps/details?id=com.ioumoney.app"
             target="_blank"
+            rel="noopener"
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
               <path
@@ -292,11 +471,12 @@
 
     <!-- FOOTER -->
     <footer>
-      <a class="footer-logo" href="#">IOU<span>.</span>Money</a>
+      <a class="footer-logo" href="/">IOU<span>.</span>Money</a>
       <div class="footer-socials">
         <a
           href="https://www.facebook.com/iou.money.npl"
           target="_blank"
+          rel="noopener"
           aria-label="Facebook"
         >
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -308,6 +488,7 @@
         <a
           href="https://www.instagram.com/iou.money/"
           target="_blank"
+          rel="noopener"
           aria-label="Instagram"
         >
           <svg
@@ -326,6 +507,7 @@
         <a
           href="https://www.linkedin.com/company/iou-money"
           target="_blank"
+          rel="noopener"
           aria-label="LinkedIn"
         >
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -346,6 +528,7 @@
           <a
             href="https://www.nikeshakya.com.np"
             target="_blank"
+            rel="noopener"
             style="color: var(--purple-light); font-weight: 700"
             >Nikesh Shakya</a
           >
